@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Page</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+        <h2>Name: <%=recipe.name %>
+        </h2>
+        <h4>Ingredients: </h4>
+        <ul>
+            <% recipe.ingredients.map((ingredient)=> {%>
+                <li>
+                    <%= ingredient.name %>
+                </li>
+                <% })%>
+        </ul>
+        <p>Instructions: <%=recipe.instructions %>
+        </p>
+        <% if (recipe.owner._id.equals(user._id)) { %>
+            <a href="/recipes/<%= recipe._id %>/edit">Edit this recipe</a>
+            <form action="/recipes/<%=recipe._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        <%}%>
+</body>
+</html>

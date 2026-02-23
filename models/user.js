@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  // recipes: { //! "You will be referencing the Recipe schema within the User schema, establishing a one-to-many relationship"
+  // recipes: {
   //   type: String,
   //   ref: "Recipe"
   // }

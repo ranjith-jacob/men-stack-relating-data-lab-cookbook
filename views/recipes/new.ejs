@@ -7,19 +7,25 @@
 </head>
 <body>
     <%- include("../partials/_navbar.ejs") %>
-    <h1>Add a new Recipe!</h1>
-    <form action="/recipes" method="POST">
-        
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required/>
+        <h1>Add a new Recipe!</h1>
+        <form action="/recipes" method="POST">
 
-        <label for="instructions">Instructions</label>
-        <input type="textarea" name="instructions" id="instructions"/>
-        
-        <label for="ingredients">Ingredients</label>
-        <input type="text" name="ingredients" id="ingredients"/> <!-- verify if input type is text, and if each ingredient needs its own field -->
-        
-        <button type="submit">Submit!</button>
-    </form>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required />
+
+            <label for="instructions">Instructions</label>
+            <input type="textarea" name="instructions" id="instructions" />
+
+            <label for="ingredients">Ingredients</label>
+            <select name="ingredients" id="ingredients" multiple>
+                <% ingredients.forEach(ingredient => { %>
+                    <option value="<%= ingredient._id %>">
+                        <%= ingredient.name %>
+                    </option>
+                    <% }) %>
+            </select>
+
+            <button type="submit">Submit!</button>
+        </form>
 </body>
 </html>

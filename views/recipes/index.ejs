@@ -14,7 +14,12 @@
     <ul>
       <% recipes.forEach((recipe) => { %>
         <li> <%=  recipe.name %> owned by <%=  recipe.owner.username %></li>
-        <a href="/recipes/<%= recipe._id %>">View more details here!</a> <!-- show page wip -->
+        <a href="/recipes/<%= recipe._id %>">View more details here!</a>
+       <% if (user) { %>
+          <form action="/recipes/<%=recipe._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+       <% } %>
       <%  }) %> 
     </ul>
   </body>
